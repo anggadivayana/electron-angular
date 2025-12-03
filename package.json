@@ -6,7 +6,7 @@
   "main": "electron-main.js",
   "scripts": {
     "build": "ng build",
-    "dev": "cross-env NG_PORT=1945 concurrently \"ng serve --port $NG_PORT\" \"wait-on http://localhost:$NG_PORT && electron-forge start\"",
+    "dev": "cross-env-shell NG_PORT=1945 'concurrently \"ng serve --port $NG_PORT\" \"wait-on http://localhost:$NG_PORT && electron-forge start\"'",
     "prod": "ng build && electron-forge make"
   },
   "prettier": {
@@ -48,7 +48,6 @@
     "@electron/fuses": "^1.8.0",
     "@tailwindcss/postcss": "^4.1.12",
     "concurrently": "^9.2.1",
-    "cross-env": "^10.1.0",
     "electron": "^39.2.4",
     "jsdom": "^27.1.0",
     "postcss": "^8.5.3",
