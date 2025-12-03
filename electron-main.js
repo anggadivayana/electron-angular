@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron');
+const isDev = !app.isPackaged;
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -10,9 +11,16 @@ function createWindow() {
     },
   });
 
-  const port = process.env.NG_PORT;
-  win.loadURL(`http://localhost:${port}`);
-  win.webContents.openDevTools();
+  if (isDev) {
+    // Load dev server
+    const port = process.env.NG_PORT;
+    win.loadURL(`http://localhost:${port}`);
+    win.webContents.openDevTools();
+  } else {
+    // Load production / build
+    win.setMenu(null);
+    win.loadFile('dist/electron-angular/browser/index.html');
+  }
 }
 
 app.whenReady().then(createWindow);
