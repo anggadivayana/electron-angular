@@ -1,6 +1,7 @@
 {
   "name": "electron-angular",
   "version": "0.0.0",
+  "license": "MIT",
   "authors": "Div",
   "description": "A simple Electron Angular application",
   "main": "electron-main.js",
