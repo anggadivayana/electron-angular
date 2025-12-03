@@ -1,12 +1,15 @@
 {
   "name": "electron-angular",
   "version": "0.0.0",
+  "authors": "Div",
+  "description": "A simple Electron Angular application",
+  "main": "electron-main.js",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "electron": "electron .",
+    "dev": "cross-env NG_PORT=1945 concurrently \"ng serve --port $NG_PORT\" \"wait-on http://localhost:$NG_PORT && electron .\"",
+    "prod": "ng build && electron ."
   },
   "prettier": {
     "printWidth": 100,
@@ -37,10 +40,14 @@
     "@angular/cli": "^21.0.1",
     "@angular/compiler-cli": "^21.0.0",
     "@tailwindcss/postcss": "^4.1.12",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^39.2.4",
     "jsdom": "^27.1.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.8",
+    "wait-on": "^9.0.3"
   }
 }
